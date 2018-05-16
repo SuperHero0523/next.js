@@ -2,14 +2,20 @@ import React from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick-theme.css';
 import 'slick-carousel/slick/slick.css';
+import './style.css';
 
 class Index extends React.Component {
   renderSlide = index => {
     const i = index + 1;
+    const imageUrl = `http://via.placeholder.com/350x150?text=${i}`;
     return (
       <div key={i}>
-        <img src={`https://picsum.photos/420/320?image=${i}`} />
-        <h3>{i}</h3>
+        <figure>
+          <img src={imageUrl} />
+          <figcaption>
+            <p>Legend of item {i}</p>
+          </figcaption>
+        </figure>
       </div>
     );
   };
@@ -20,6 +26,10 @@ class Index extends React.Component {
     return (
       <div>
         <h2>This is react-slider X next.js</h2>
+        <p>
+          There is a bug when using responsive settings: look at image src
+          attribute when screen is smaller that 768px
+        </p>
         <Slider
           autoplay={false}
           initialSlide={1}
@@ -29,14 +39,14 @@ class Index extends React.Component {
           dots={true}
           responsive={[
             {
-              breakpoint: 1023,
+              breakpoint: 1024,
               settings: {
                 slidesToShow: 2,
                 slidesToScroll: 2
               }
             },
             {
-              breakpoint: 767,
+              breakpoint: 768,
               settings: {
                 slidesToShow: 1,
                 slidesToScroll: 1
